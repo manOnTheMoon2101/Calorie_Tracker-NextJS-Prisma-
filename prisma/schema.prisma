@@ -1,0 +1,21 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Progress {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  date DateTime @default(now())
+  protein Int
+  sugar Int
+  fat Int
+  weight Float
+
+  totalCalories Int
+  CaloriesBurned Int
+}
