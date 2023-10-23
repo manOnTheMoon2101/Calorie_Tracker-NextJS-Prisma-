@@ -13,9 +13,9 @@ import {
   
 } from "chart.js";
 
-
+import { useCallback,useRef } from "react";
 import { Line } from "react-chartjs-2";
-
+import styles from '../page.module.css'
 
 
 import React from 'react'
@@ -64,6 +64,17 @@ ChartJS.register(
 
 export default async function Graphs() {
 
+  const ref = useRef(null);
+
+  const dowN = useCallback(()=>{
+
+    const link = document.createElement('a');
+    link.download = "Weight-Chart.png";
+    link.href = ref.current.toBase64Image();
+    link.click();
+
+  },[]);
+
   const posts = await getData();
   return (
     <>
@@ -71,8 +82,12 @@ export default async function Graphs() {
    
   
 
+<button className={styles.downloadB} onClick={dowN}>Download Graph</button>
+
 
     <Line
+    ref={ref}
+
    width={600}
     height={400}
     options={{
@@ -125,6 +140,7 @@ fill:true,
         ]}}
           
       />
+    
     </>
    
   )

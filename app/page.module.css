@@ -1,4 +1,11 @@
 
+.downloadB{
+    background-color: rgb(233, 184, 36);
+    border: 1px solid rgb(238, 147, 34);
+    border-radius: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    margin-top: 10px;
+}
 
 
 
