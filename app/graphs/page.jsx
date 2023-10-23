@@ -64,12 +64,16 @@ ChartJS.register(
 
 export default async function Graphs() {
 
+  const date = new Date();
+  const month = date.toLocaleString('default', { month: 'long' });
+  const day = date.getUTCDate()
+  const year = date.getFullYear()
   const ref = useRef(null);
 
   const dowN = useCallback(()=>{
 
     const link = document.createElement('a');
-    link.download = "Weight-Chart.png";
+    link.download = `${day} ${month} ${year}`;
     link.href = ref.current.toBase64Image();
     link.click();
 
