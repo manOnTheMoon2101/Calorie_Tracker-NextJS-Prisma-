@@ -77,7 +77,9 @@ export default async function Graphs() {
   const month = date.toLocaleString('default', { month: 'long' });
   const day = date.getUTCDate()
   const year = date.getFullYear()
+
   const ref = useRef(null);
+  const ref2 = useRef(null);
 
   const dowN = useCallback(()=>{
 
@@ -88,6 +90,14 @@ export default async function Graphs() {
 
   },[]);
 
+  const dowN2 = useCallback(()=>{
+
+    const link = document.createElement('a');
+    link.download = `${day} ${month} ${year}`;
+    link.href = ref2.current.toBase64Image();
+    link.click();
+
+  },[]);
   const posts = await getData();
   const novemB = await getNo();
 
@@ -164,9 +174,11 @@ fill:true,
 
 
 
+    <button className={styles.downloadB} onClick={dowN2}>Download Graph</button>
+
 
     <Line
-    ref={ref}
+    ref={ref2}
 
    width={600}
     height={400}
