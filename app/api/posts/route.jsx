@@ -35,10 +35,15 @@ export const POST = async (request) =>{
 export const GET = async () =>{
 
     try {
-        const posts = await prisma.progress.findMany()
+        const posts = await prisma.progress.findMany({
+            orderBy:{
+                date:'desc'
+            }
+        })
 
         posts.map((x) =>{
             x.date = x.date.toDateString();
+            
         })
         return NextResponse.json(posts)
     }

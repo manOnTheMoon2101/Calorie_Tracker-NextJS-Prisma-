@@ -110,7 +110,7 @@ export default async function Graphs() {
    
   
 
-<button className={styles.downloadB} onClick={dowN}>Download Graph</button>
+<button className={styles.downloadB} onClick={dowN}>Download October Graph</button>
 
 
     <Line
@@ -174,7 +174,7 @@ fill:true,
 
 
 
-    <button className={styles.downloadB} onClick={dowN2}>Download Graph</button>
+    <button  className={styles.downloadB} onClick={dowN2}>Download November Graph</button>
 
 
     <Line
