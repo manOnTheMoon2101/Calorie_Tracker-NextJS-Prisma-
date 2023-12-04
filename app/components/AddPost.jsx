@@ -36,6 +36,9 @@ const AddPost = () => {
     const value = parseFloat(e.target.value);
     setInputs((prevState) => ({ ...prevState, [name]: value }));
   };
+
+
+  
   return (
     <div>
       <button
@@ -47,6 +50,7 @@ const AddPost = () => {
       </button>
 
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
+        
         <form  onSubmit={handleSubmit}>
           <h1>Add new Date</h1>
 
