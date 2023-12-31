@@ -15,9 +15,13 @@ export const GET = async () =>{
         const posts = await prisma.progress.findMany({
             where:{
                 date:{
-                    lte: new Date(
-                        '2023-10-31T01:00:00.459+00:00'
-                    )
+                    gte: new Date(
+                        '2024-01-01T01:00:00.459+00:00'
+                    ),
+                    lte:new Date(
+                        '2024-01-31T01:00:00.459+00:00'
+                    ),
+
                 }
             }
         })

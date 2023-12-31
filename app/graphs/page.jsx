@@ -51,8 +51,8 @@ ChartJS.register(
 
 
 
-  async function getData() {
-    const res = await fetch("http://localhost:3000/api/posts/getOctober", { cache: 'no-store' });
+  async function getJanuary() {
+    const res = await fetch("http://localhost:3000/api/posts/getJanuary", { cache: 'no-store' });
   
     if(!res.ok) {
         throw new Error("Failed to fetch data")
@@ -61,26 +61,10 @@ ChartJS.register(
     return res.json();
   }
 
-  async function getNo() {
-    const res = await fetch("http://localhost:3000/api/posts/getNovember", { cache: 'no-store' });
-  
-    if(!res.ok) {
-        throw new Error("Failed to fetch data")
-    }
-  
-    return res.json();
-  }
+ 
 
 
-  async function getDe() {
-    const res = await fetch("http://localhost:3000/api/posts/getDecember", { cache: 'no-store' });
-  
-    if(!res.ok) {
-        throw new Error("Failed to fetch data")
-    }
-  
-    return res.json();
-  }
+
 export default async function Graphs() {
 
   const date = new Date();
@@ -109,9 +93,7 @@ export default async function Graphs() {
     link.click();
 
   },[]);
-  const posts = await getData();
-  const novemB = await getNo();
-  const decB = await getDe();
+  const posts = await getJanuary();
 
 
   
@@ -122,7 +104,7 @@ export default async function Graphs() {
    
   
 
-<button className={styles.downloadB} onClick={dowN}>Download October Graph</button>
+<button className={styles.downloadB} onClick={dowN}>Download January Graph</button>
 
 
     <Line
@@ -148,7 +130,7 @@ export default async function Graphs() {
       
       title:{
         display:true,
-        text:"October 2023",
+        text:"January 2024",
         color:'white'
       },
       
@@ -186,124 +168,7 @@ fill:true,
 
 
 
-    <button  className={styles.downloadB} onClick={dowN2}>Download November Graph</button>
-
-
-    <Line
-    ref={ref2}
-
-   width={600}
-    height={400}
-    options={{
-      
-      responsive:false,
-     
-      
-      scales:{
-        
-        x :{
-          ticks:{color:'white'}
-        }
-      },
-      
-      plugins:{
-      
-       
-      
-      title:{
-        display:true,
-        text:"November 2023",
-        color:'white'
-      },
-      
-
-    }}}
-        data={{
-          labels:novemB.map((x) => x.date),
-          
-          datasets:[
-          {
-            
-            
-            
-            label:'Weight',
-            
-            
-            data: novemB.map((x) => x.weight),
-            
-            backgroundColor:'rgb(233, 184, 36)',
-hoverBackgroundColor:'rgb(255, 99, 132)',
-borderWidth:4,
-fill:true,
-            borderColor:'rgb(216, 63, 49)',
-            pointBorderColor: '#111',
-            pointBackgroundColor: 'rgb(238, 147, 34)',
-            pointBorderWidth: 2,
-          }
-          
-        ]}}
-          
-      />
-    
-
-    <button className={styles.downloadB} onClick={dowN}>Download December Graph</button>
-
-
-    <Line
-    ref={ref}
-
-   width={600}
-    height={400}
-    options={{
-      
-      responsive:false,
-     
-      
-      scales:{
-        
-        x :{
-          ticks:{color:'white'}
-        }
-      },
-      
-      plugins:{
-      
-       
-      
-      title:{
-        display:true,
-        text:"October 2023",
-        color:'white'
-      },
-      
-
-    }}}
-        data={{
-          labels:decB.map((x) => x.date),
-          
-          datasets:[
-          {
-            
-            
-            
-            label:'Weight',
-            
-            
-            data: decB.map((x) => x.weight),
-            
-            backgroundColor:'rgb(233, 184, 36)',
-hoverBackgroundColor:'rgb(255, 99, 132)',
-borderWidth:4,
-fill:true,
-            borderColor:'rgb(216, 63, 49)',
-            pointBorderColor: '#111',
-            pointBackgroundColor: 'rgb(238, 147, 34)',
-            pointBorderWidth: 2,
-          }
-          
-        ]}}
-          
-      />
+   
     
     </>
    
